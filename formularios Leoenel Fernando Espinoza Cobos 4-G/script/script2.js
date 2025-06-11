@@ -1,21 +1,22 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("form1");
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+document.getElementById("contactForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const nombre = document.getElementById("nombre").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const error = document.getElementById("error");
 
-    const nombre = document.getElementById("nombre").value.trim();
-    const correo = document.getElementById("correo").value.trim();
+  const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
 
-    if (!nombre || !correo) {
-      alert("Todos los campos son obligatorios.");
-      return;
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(correo)) {
-      alert("Por favor, ingresa un correo válido.");
-      return;
-    }
-    localStorage.setItem("formData", JSON.stringify({ nombre, correo }));
-    window.location.href = "../formularios/confirm.html";
-  });
+  if (!nombre || !email) {
+    error.textContent = "Todos los campos son obligatorios.";
+    return;
+  }
+
+  if (!emailRegex.test(email)) {
+    error.textContent = "Correo no válido.";
+    return;
+  }
+
+  sessionStorage.setItem("nombre", nombre);
+  sessionStorage.setItem("email", email);
+  window.location.href = "../formularios/confirm.html";
 });
