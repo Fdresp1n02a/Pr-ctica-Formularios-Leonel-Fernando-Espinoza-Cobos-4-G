@@ -2,21 +2,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("form2");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-
-    const edad = document.getElementById("edad").value.trim();
+    const edad = parseInt(document.getElementById("edad").value.trim());
     const mensaje = document.getElementById("mensaje").value.trim();
-
-    if (!edad || !mensaje) {
-      alert("Todos los campos son obligatorios.");
+    if (isNaN(edad) || edad <= 0) {
+      alert("Por favor, introduce una edad válida.");
       return;
     }
 
-    if (isNaN(edad) || Number(edad) <= 0) {
-      alert("Por favor, ingresa una edad válida.");
+    if (mensaje.length < 10) {
+      alert("El mensaje debe tener al menos 10 caracteres.");
       return;
     }
-
-    localStorage.setItem("formData", JSON.stringify({ edad, mensaje }));
-    window.location.href = "../formularios/confirm.html";
+    sessionStorage.setItem("edad", edad);
+    sessionStorage.setItem("mensaje", mensaje);
+    window.location.href = "../formularios/confirmacion.html";
   });
 });
+
