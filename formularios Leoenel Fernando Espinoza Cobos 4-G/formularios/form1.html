@@ -1,18 +1,28 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Formulario</title>
+  <title>Registro</title>
   <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
-  <h2>Formulario de Contacto</h2>
-  <form id="contactForm">
-    <input type="text" id="nombre" placeholder="Nombre" required>
-    <input type="email" id="email" placeholder="Correo" required>
-    <button type="submit">Enviar</button>
+  <form id="registerForm" class="form-card">
+    <h2>Formulario de Registro</h2>
+    <input type="text" id="newUser" placeholder="Nombre de usuario" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <div class="password-container">
+      <input type="password" id="newPass" placeholder="Contraseña" required />
+      <button type="button" onclick="togglePassword('newPass')">👁</button>
+    </div>
+    <div class="password-container">
+      <input type="password" id="repeatPass" placeholder="Repita contraseña" required />
+      <button type="button" onclick="togglePassword('repeatPass')">👁</button>
+    </div>
+    <input type="text" id="fullName" placeholder="Nombre Completo" required />
+    <label><input type="checkbox" required /> He leído y acepto los <a href="#">Términos y Condiciones</a>.</label>
+    <label><input type="checkbox" /> No quiero recibir correos electrónicos...</label>
+    <button type="submit">ACCEDER</button>
   </form>
-  <p id="error" class="error"></p>
-  <script src="../script/script2.js"></script>
+  <script src="../script/register.js"></script>
+  <script src="../script/togglePassword.js"></script>
 </body>
 </html>
