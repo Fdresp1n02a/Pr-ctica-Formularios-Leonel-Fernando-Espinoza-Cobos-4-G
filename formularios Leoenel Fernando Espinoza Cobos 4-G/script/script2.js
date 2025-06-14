@@ -1,22 +1,11 @@
-document.getElementById("contactForm").addEventListener("submit", function(event) {
-  event.preventDefault();
-  const nombre = document.getElementById("nombre").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const error = document.getElementById("error");
-
-  const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
-
-  if (!nombre || !email) {
-    error.textContent = "Todos los campos son obligatorios.";
+document.getElementById('registerForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const pass1 = document.getElementById('newPass').value;
+  const pass2 = document.getElementById('repeatPass').value;
+  if (pass1 !== pass2) {
+    alert('Las contraseñas no coinciden');
     return;
   }
-
-  if (!emailRegex.test(email)) {
-    error.textContent = "Correo no válido.";
-    return;
-  }
-
-  sessionStorage.setItem("nombre", nombre);
-  sessionStorage.setItem("email", email);
-  window.location.href = "../formularios/confirm.html";
+  alert('Registro exitoso');
+  window.location.href = '../pages/home.html';
 });
