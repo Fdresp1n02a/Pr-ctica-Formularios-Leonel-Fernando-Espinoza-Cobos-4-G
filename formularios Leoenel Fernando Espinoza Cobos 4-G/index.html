@@ -1,20 +1,23 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Login</title>
-  <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="stylesheet" href="styles/styles.css" />
 </head>
 <body>
-  <div class="container">
-    <h2>Iniciar Sesión</h2>
-    <form id="loginForm">
-      <input type="text" id="username" placeholder="Usuario" required>
-      <input type="password" id="password" placeholder="Contraseña" required>
-      <button type="submit">Entrar</button>
-    </form>
-    <p id="error" class="error"></p>
-  </div>
-  <script src="./script/script.js"></script>
+  <form id="loginForm" class="form-card">
+    <h2>Formulario de Acceso</h2>
+    <input type="text" id="username" placeholder="Email o NIF" required />
+    <div class="password-container">
+      <input type="password" id="password" placeholder="Contraseña" required />
+      <button type="button" onclick="togglePassword('password')">👁</button>
+    </div>
+    <label><input type="checkbox" id="keepSession" /> Mantener la sesión iniciada</label>
+    <a href="#">Recordar contraseña</a>
+    <button type="submit">ACCEDER</button>
+    <button type="button" onclick="location.href='pages/register.html'">REGISTRARSE</button>
+  </form>
+  <script src="script/login.js"></script>
+  <script src="script/togglePassword.js"></script>
 </body>
 </html>
